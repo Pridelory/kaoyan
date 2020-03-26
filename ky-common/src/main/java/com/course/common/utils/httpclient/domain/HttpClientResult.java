@@ -2,7 +2,10 @@ package com.course.common.utils.httpclient.domain;
 
 import java.io.Serializable;
 
-public class HttpClientResult implements Serializable{
+/**
+ * httpClient返回结果
+ */
+public class HttpClientResult implements Serializable {
 
     /**
      * 响应状态码

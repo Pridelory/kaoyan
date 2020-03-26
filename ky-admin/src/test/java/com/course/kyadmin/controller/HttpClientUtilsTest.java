@@ -70,4 +70,11 @@ public class HttpClientUtilsTest {
 		System.out.println(result);
 	}
 
+	@Test
+	public void testBaiduyun() throws Exception{
+		Map<String, String> params = new HashMap<>();
+		params.put("access_token", "123.1281ca5a046f5fed5ff71cc29fddb36d.YloHy5V6hUuTuDvvIY1pFkC7mrHOjXyWaymYMWA.nqOMGw");
+		HttpClientResult result = HttpClientUtils.doGet("https://pan.baidu.com/rest/2.0/xpan/nas?method=uinfo", params);
+		System.out.println(result);
+	}
 }

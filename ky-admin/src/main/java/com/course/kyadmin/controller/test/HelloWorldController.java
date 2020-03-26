@@ -1,5 +1,8 @@
 package com.course.kyadmin.controller.test;
 
+import com.course.modules.baidunetdisk.IDiskBasic;
+import com.course.modules.baidunetdisk.entity.UserInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -11,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/hello")
 public class HelloWorldController {
+
+	@Autowired
+	private IDiskBasic diskBasic;
 
 	@GetMapping("/get")
 	public String get() throws InterruptedException {
@@ -43,6 +49,15 @@ public class HelloWorldController {
 	@PostMapping("/postWithParam")
 	public String postWithParam(@RequestParam String code, @RequestParam String message) {
 		return "post带参请求成功,参数code: " + code + ",参数message: " + message;
+	}
+
+	@GetMapping("/test")
+	public void testFirstApi() {
+		try {
+			UserInfo userInfo = diskBasic.getDiskUserInfo("123.1281ca5a046f5fed5ff71cc29fddb36d.YloHy5V6hUuTuDvvIY1pFkC7mrHOjXyWaymYMWA.nqOMGw");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

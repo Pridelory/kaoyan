@@ -19,7 +19,7 @@ import java.util.Map.Entry;
 
 /**
  * httpClient工具类
- * 
+ *
  * @author wangmeng
  * @since  2020-03-26
  */
@@ -27,16 +27,16 @@ public class HttpClientUtils {
 
 	// 编码格式。发送编码格式统一用UTF-8
 	private static final String ENCODING = "UTF-8";
-	
+
 	// 设置连接超时时间，单位毫秒。
 	private static final int CONNECT_TIMEOUT = 6000;
-	
+
 	// 请求获取数据的超时时间(即响应时间)，单位毫秒。
 	private static final int SOCKET_TIMEOUT = 6000;
 
 	/**
 	 * 发送get请求；不带请求头和请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @return
 	 * @throws Exception
@@ -44,10 +44,10 @@ public class HttpClientUtils {
 	public static HttpClientResult doGet(String url) throws Exception {
 		return doGet(url, null, null);
 	}
-	
+
 	/**
 	 * 发送get请求；带请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @param params 请求参数集合
 	 * @return
@@ -59,7 +59,7 @@ public class HttpClientUtils {
 
 	/**
 	 * 发送get请求；带请求头和请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @param headers 请求头集合
 	 * @param params 请求参数集合
@@ -89,7 +89,7 @@ public class HttpClientUtils {
 		 */
 		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
 		httpGet.setConfig(requestConfig);
-		
+
 		// 设置请求头
 		packageHeader(headers, httpGet);
 
@@ -107,7 +107,7 @@ public class HttpClientUtils {
 
 	/**
 	 * 发送post请求；不带请求头和请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @return
 	 * @throws Exception
@@ -115,10 +115,10 @@ public class HttpClientUtils {
 	public static HttpClientResult doPost(String url) throws Exception {
 		return doPost(url, null, null);
 	}
-	
+
 	/**
 	 * 发送post请求；带请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @param params 参数集合
 	 * @return
@@ -130,7 +130,7 @@ public class HttpClientUtils {
 
 	/**
 	 * 发送post请求；带请求头和请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @param headers 请求头集合
 	 * @param params 请求参数集合
@@ -159,7 +159,7 @@ public class HttpClientUtils {
 		httpPost.setHeader("Accept-Encoding", "gzip, deflate, br");
 		httpPost.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36");*/
 		packageHeader(headers, httpPost);
-		
+
 		// 封装请求参数
 		packageParam(params, httpPost);
 
@@ -177,7 +177,7 @@ public class HttpClientUtils {
 
 	/**
 	 * 发送put请求；不带请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @return
 	 * @throws Exception
@@ -188,7 +188,7 @@ public class HttpClientUtils {
 
 	/**
 	 * 发送put请求；带请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @param params 参数集合
 	 * @return
@@ -199,7 +199,7 @@ public class HttpClientUtils {
 		HttpPut httpPut = new HttpPut(url);
 		RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(CONNECT_TIMEOUT).setSocketTimeout(SOCKET_TIMEOUT).build();
 		httpPut.setConfig(requestConfig);
-		
+
 		packageParam(params, httpPut);
 
 		CloseableHttpResponse httpResponse = null;
@@ -213,7 +213,7 @@ public class HttpClientUtils {
 
 	/**
 	 * 发送delete请求；不带请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @return
 	 * @throws Exception
@@ -234,7 +234,7 @@ public class HttpClientUtils {
 
 	/**
 	 * 发送delete请求；带请求参数
-	 * 
+	 *
 	 * @param url 请求地址
 	 * @param params 参数集合
 	 * @return
@@ -248,7 +248,7 @@ public class HttpClientUtils {
 		params.put("_method", "delete");
 		return doPost(url, params);
 	}
-	
+
 	/**
 	 * Description: 封装请求头
 	 * @param params
@@ -267,7 +267,7 @@ public class HttpClientUtils {
 
 	/**
 	 * Description: 封装请求参数
-	 * 
+	 *
 	 * @param params
 	 * @param httpMethod
 	 * @throws UnsupportedEncodingException
@@ -289,7 +289,7 @@ public class HttpClientUtils {
 
 	/**
 	 * Description: 获得响应结果
-	 * 
+	 *
 	 * @param httpResponse
 	 * @param httpClient
 	 * @param httpMethod
@@ -314,7 +314,7 @@ public class HttpClientUtils {
 
 	/**
 	 * Description: 释放资源
-	 * 
+	 *
 	 * @param httpResponse
 	 * @param httpClient
 	 * @throws IOException
