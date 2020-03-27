@@ -1,6 +1,6 @@
 package com.course.kyadmin.controller.test;
 
-import com.course.modules.baidunetdisk.IDiskBasic;
+import com.course.modules.baidunetdisk.IDiskBasicService;
 import com.course.modules.baidunetdisk.entity.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class HelloWorldController {
 
 	@Autowired
-	private IDiskBasic diskBasic;
+	private IDiskBasicService diskBasic;
 
 	@GetMapping("/get")
 	public String get() throws InterruptedException {
