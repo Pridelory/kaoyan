@@ -3,6 +3,8 @@ package com.course.modules.baidunetdisk.entity;
 import lombok.Data;
 
 /**
+ * 缩略图
+ *
  * 包含三个尺寸的缩略图URL
  */
 @Data

@@ -1,4 +1,4 @@
-package com.course.modules.baidunetdisk.vo.queryvo;
+package com.course.modules.baidunetdisk.vo.queryvo.netdisk_basic_queryvo;
 
 import com.course.modules.baidunetdisk.vo.queryvo.common.PageQueryVO;
 import lombok.Data;

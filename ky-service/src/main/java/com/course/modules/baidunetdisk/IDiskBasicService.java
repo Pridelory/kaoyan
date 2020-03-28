@@ -3,7 +3,7 @@ package com.course.modules.baidunetdisk;
 import com.course.modules.baidunetdisk.entity.File;
 import com.course.modules.baidunetdisk.entity.NetDiskInfo;
 import com.course.modules.baidunetdisk.entity.UserInfo;
-import com.course.modules.baidunetdisk.vo.queryvo.*;
+import com.course.modules.baidunetdisk.vo.queryvo.netdisk_basic_queryvo.*;
 
 import java.util.List;
 
@@ -66,4 +66,14 @@ public interface IDiskBasicService {
      * @throws Exception
      */
     List<File> getVideoList(String access_token, VideoListQueryVO queryVO) throws Exception;
+
+    /**
+     * 搜索文件
+     * @param access_token
+     * @param queryVO
+     * @return
+     * @throws Exception
+     */
+    List<File> searchFile(String access_token, SearchFileQueryVO queryVO) throws Exception;
+
 }

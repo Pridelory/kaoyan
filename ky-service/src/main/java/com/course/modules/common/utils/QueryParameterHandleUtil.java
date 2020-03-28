@@ -40,6 +40,11 @@ public class QueryParameterHandleUtil {
             try {
                 if (null == field.get(queryVO) || "".equals(field.get(queryVO))) {
                     continue;
+                } else if (field.getType().isArray() ) {
+                    // 如果当前是Field是数组类型
+                    // 当前只支持一维数组
+                    Object[] objects = (Object[]) field.get(queryVO);
+                    parameterMap.put(field.getName(), Arrays.toString(objects));
                 } else {
                     parameterMap.put(field.getName(), String.valueOf(field.get(queryVO)));
                 }

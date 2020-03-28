@@ -1,7 +1,7 @@
 package com.course.kyapi.util;
 
 import com.course.modules.common.utils.QueryParameterHandleUtil;
-import com.course.modules.baidunetdisk.vo.queryvo.FileListQueryVO;
+import com.course.modules.baidunetdisk.vo.queryvo.netdisk_basic_queryvo.FileListQueryVO;
 import org.junit.Test;
 
 import java.util.Map;

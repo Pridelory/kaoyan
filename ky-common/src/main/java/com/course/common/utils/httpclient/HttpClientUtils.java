@@ -276,7 +276,7 @@ public class HttpClientUtils {
 			throws UnsupportedEncodingException {
 		// 封装请求参数
 		if (params != null) {
-			List<NameValuePair> nvps = new ArrayList<NameValuePair>();
+			List<NameValuePair> nvps = new ArrayList<>();
 			Set<Entry<String, String>> entrySet = params.entrySet();
 			for (Entry<String, String> entry : entrySet) {
 				nvps.add(new BasicNameValuePair(entry.getKey(), entry.getValue()));

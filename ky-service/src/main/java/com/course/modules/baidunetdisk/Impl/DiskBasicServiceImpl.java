@@ -7,11 +7,11 @@ import com.course.common.link.NetDiskBasicLink;
 import com.course.common.utils.httpclient.HttpClientUtils;
 import com.course.common.utils.httpclient.domain.HttpClientResult;
 import com.course.modules.baidunetdisk.IDiskBasicService;
+import com.course.modules.baidunetdisk.vo.queryvo.netdisk_basic_queryvo.*;
 import com.course.modules.common.utils.QueryParameterHandleUtil;
 import com.course.modules.baidunetdisk.entity.File;
 import com.course.modules.baidunetdisk.entity.NetDiskInfo;
 import com.course.modules.baidunetdisk.entity.UserInfo;
-import com.course.modules.baidunetdisk.vo.queryvo.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,12 +43,6 @@ public class DiskBasicServiceImpl implements IDiskBasicService {
     public NetDiskInfo getNetDiskInfo(String access_token, NetDiskInfoQueryVO queryVO) throws Exception {
         Map<String, String> params = QueryParameterHandleUtil.handleQueryParameter(queryVO);
         params.put("access_token", access_token);
-        if (null != queryVO && null != queryVO.getCheckfree()) {
-            params.put("checkfree", String.valueOf(queryVO.getCheckfree()));
-        }
-        if (null != queryVO && null != queryVO.getCheckexpire()) {
-            params.put("checkexpire", String.valueOf(queryVO.getCheckexpire()));
-        }
         HttpClientResult httpClientResult = HttpClientUtils.doGet(NetDiskBasicLink.getNetDiskCapacity, params);
         if ("200".equals(String.valueOf(httpClientResult.getCode()))) {
             // 接口请求成功
@@ -135,6 +129,22 @@ public class DiskBasicServiceImpl implements IDiskBasicService {
             JSONArray jsonArray = (JSONArray) jsonObject.get("info");
             List<File> videoList = jsonArray.toJavaList(File.class);
             return videoList;
+        }
+        return null;
+    }
+
+    @Override
+    public List<File> searchFile(String access_token, SearchFileQueryVO queryVO) throws Exception {
+        Map<String, String> params = QueryParameterHandleUtil.handleQueryParameter(queryVO);
+        params.put("access_token", access_token);
+        HttpClientResult httpClientResult = HttpClientUtils.doGet(NetDiskBasicLink.searchFile, params);
+        if ("200".equals(String.valueOf(httpClientResult.getCode()))) {
+            // 接口请求成功
+            String content = httpClientResult.getContent();
+            JSONObject jsonObject = (JSONObject) JSON.parse(content);
+            JSONArray jsonArray = (JSONArray) jsonObject.get("list");
+            List<File> fileList = jsonArray.toJavaList(File.class);
+            return fileList;
         }
         return null;
     }
